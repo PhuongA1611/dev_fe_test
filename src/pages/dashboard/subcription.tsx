@@ -9,7 +9,6 @@ import {
   Legend
 } from 'chart.js'
 import { Line } from 'react-chartjs-2'
-import faker from 'faker'
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend)
 
@@ -33,13 +32,13 @@ const data = {
   datasets: [
     {
       label: 'Last week',
-      data: labels.map(() => faker.datatype.number({ min: 0, max: 1000 })),
+      data: labels.map(() => Math.random() * 1000),
       borderColor: '#5C5C5C',
       backgroundColor: '#5C5C5C'
     },
     {
       label: 'This week',
-      data: labels.map(() => faker.datatype.number({ min: 0, max: 1000 })),
+      data: labels.map(() => Math.random() * 1000),
       borderColor: '#115BB2',
       backgroundColor: '#115BB2'
     }
