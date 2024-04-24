@@ -1,4 +1,4 @@
-import { MainLayout, DashBoardLayout } from '@/components/layouts'
+import { MainLayout, DashBoardLayout, NotFound } from '@/components/layouts'
 import { PostManagement, Revenue, Settings, Subscription } from '@/pages'
 import { Navigate, Outlet, useRoutes } from 'react-router-dom'
 
@@ -43,6 +43,10 @@ export default function useRouteElements() {
           <Settings />
         </MainLayout>
       )
+    },
+    {
+      path: '*',
+      element: <NotFound />
     }
   ])
   return routeElements
