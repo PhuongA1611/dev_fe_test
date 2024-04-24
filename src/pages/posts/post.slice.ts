@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { postApi } from '@/apis'
 import { FilterPost, Post } from '@/interfaces'
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
@@ -14,7 +15,6 @@ export const getPostList = createAsyncThunk('post/getPostList', async () => awai
 
 export const getPostFilter = createAsyncThunk(
   'post/getPostFilter',
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   async (params: FilterPost) => await postApi.getList()
 )
 

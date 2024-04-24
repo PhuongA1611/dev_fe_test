@@ -7,7 +7,8 @@ type FieldType = {
   title?: string
   email?: string
   color?: string | null
-  date?: string | Dayjs
+  date?: Dayjs
+  dateString?: string
 }
 
 export default function Settings() {
@@ -30,7 +31,7 @@ export default function Settings() {
   const onFinish: FormProps<FieldType>['onFinish'] = (values) => {
     if (!disableSubmit) {
       if (values.date) {
-        values.date = values.date.format(FORMAT_DATE)
+        values.dateString = values.date.format(FORMAT_DATE)
       }
       console.log(values)
     }

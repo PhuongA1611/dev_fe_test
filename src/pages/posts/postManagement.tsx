@@ -38,7 +38,7 @@ const columns: TableProps<Post>['columns'] = [
   {
     title: 'Action',
     align: 'center',
-    render: (_: any, record: Post) => (
+    render: (_: Post, record: Post) => (
       <Space size='middle'>
         <a onClick={() => onClickView(record)}>
           <EyeOutlined />
@@ -50,7 +50,7 @@ const columns: TableProps<Post>['columns'] = [
 
 export default function PostManagement() {
   const postList = useAppSelector((state) => state.post.posts)
-  const tableData = useTableData()
+  useTableData()
   const [searchParams, setSearchParams] = useSearchParams()
   const page = Number(searchParams.get('page')) || 1
   const limit = Number(searchParams.get('limit')) || 10
