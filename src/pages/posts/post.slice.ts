@@ -1,7 +1,6 @@
 import { postApi } from '@/apis'
 import { FilterPost, Post } from '@/interfaces'
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import { filter } from 'lodash'
 
 interface PostState {
   posts: Post[]
@@ -15,6 +14,7 @@ export const getPostList = createAsyncThunk('post/getPostList', async () => awai
 
 export const getPostFilter = createAsyncThunk(
   'post/getPostFilter',
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   async (params: FilterPost) => await postApi.getList()
 )
 
@@ -32,9 +32,13 @@ export const postSlice = createSlice({
       const userId = action.meta.arg?.userId || null
       const title = action.meta.arg?.title || ''
 
-      let postFilterList = filter(action.payload, (o: Post) => o.title.includes(title))
+      let postFilterList = action.payload.filter((post: Post) => post.title.includes(title))
       if (userId) {
-        postFilterList = filter(postFilterList, { userId: userId })
+        console.log(userId)
+
+        postFilterList = postFilterList.filter((post: Post) => post.userId === userId)
+
+        console.log(postFilterList)
       }
       state.posts = postFilterList
     })
