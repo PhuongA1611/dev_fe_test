@@ -34,11 +34,7 @@ export const postSlice = createSlice({
 
       let postFilterList = action.payload.filter((post: Post) => post.title.includes(title))
       if (userId) {
-        console.log(userId)
-
         postFilterList = postFilterList.filter((post: Post) => post.userId === userId)
-
-        console.log(postFilterList)
       }
       state.posts = postFilterList
     })
